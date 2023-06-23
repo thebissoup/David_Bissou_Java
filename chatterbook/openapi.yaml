@@ -1,0 +1,190 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /users:
+    get:
+      tags:
+        - user-controller
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /user/{name}:
+    get:
+      tags:
+        - user-controller
+      operationId: getUserByUsername
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+  /user/posts/{name}:
+    get:
+      tags:
+        - user-controller
+      operationId: getPostsByUsername_1
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChatterPost'
+    put:
+      tags:
+        - user-controller
+      operationId: getPostsByUsername_2
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChatterPost'
+    post:
+      tags:
+        - user-controller
+      operationId: getPostsByUsername
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChatterPost'
+    delete:
+      tags:
+        - user-controller
+      operationId: getPostsByUsername_3
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChatterPost'
+    options:
+      tags:
+        - user-controller
+      operationId: getPostsByUsername_6
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChatterPost'
+    head:
+      tags:
+        - user-controller
+      operationId: getPostsByUsername_5
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChatterPost'
+    patch:
+      tags:
+        - user-controller
+      operationId: getPostsByUsername_4
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChatterPost'
+components:
+  schemas:
+    ChatterPost:
+      type: object
+      properties:
+        text:
+          type: string
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        chatterPosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatterPost'
