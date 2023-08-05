@@ -2,7 +2,7 @@ use northwind;
 
 /*What are the categories of products in the database*/ 
 SELECT DISTINCT category
-FROM products
+FROM products;
 
 /*What products are made by Dell?*/
 SELECT product_name
