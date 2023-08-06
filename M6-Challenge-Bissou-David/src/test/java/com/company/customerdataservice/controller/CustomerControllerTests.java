@@ -6,15 +6,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.company.customerdataservice.controller.CustomerController;
 import com.company.customerdataservice.model.Customer;
+import com.company.customerdataservice.repository.CustomerRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(CustomerController.class)
 public class CustomerControllerTests {
+
+    @MockBean
+    CustomerRepository repo;
 
     @Autowired
     private MockMvc mockMvc;
@@ -79,7 +84,7 @@ public class CustomerControllerTests {
     public void getCustomersByState() throws Exception {
 
 
-        mockMvc.perform(get("/state/{state}", "CA")
+        mockMvc.perform(get("/customers/state/{state}", "CA")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
